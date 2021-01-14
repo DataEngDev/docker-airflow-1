@@ -13,6 +13,7 @@ x-airflow-common:
     - ./airflow-data/logs:/opt/airflow/logs
     - ./airflow-data/plugins:/opt/airflow/plugins
     - ./airflow-data/airflow.cfg:/opt/airlfow/airflow.cfg
+    #- ./airflow-data/plugins:/opt/airflow/requirements.txt
   depends_on:
     - postgres
 
@@ -33,7 +34,7 @@ services:
     entrypoint: /bin/bash
     command:
       - -c
-      - pip install --upgrade pip && pip install hdfs && pwd && ls && airflow users list || ( airflow db init &&
+      - pip install --upgrade pip && pip install hdfs && pwd && ls && airflow users list && cp requirements.txt . || ( airflow db init &&
         airflow users create
           --role Admin
           --username airflow
