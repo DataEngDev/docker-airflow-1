@@ -13,7 +13,7 @@ x-airflow-common:
     - ./airflow-data/logs:/opt/airflow/logs
     - ./airflow-data/plugins:/opt/airflow/plugins
     - ./airflow-data/airflow.cfg:/opt/airlfow/airflow.cfg
-    #- ./airflow-data/plugins:/opt/airflow/requirements.txt
+    - .requirements.txt:/opt/airflow/requirements.txt
   depends_on:
     - postgres
 
