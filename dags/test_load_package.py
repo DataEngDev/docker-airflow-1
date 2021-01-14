@@ -25,8 +25,11 @@ with DAG(dag_id='test_load_package',
 
     start_dag = DummyOperator(task_id='START_dag')
 
-    hello_operator = PythonOperator(task_id='hello_task', python_callable=print_hello, dag=dag)
+    hello_task = PythonOperator(task_id='hello_task', python_callable=print_hello, dag=dag)
+
+    #print_task = PythonOperator(task_id='print_lib', python_callable=print_lib, dag=dag)
 
     end_dag = DummyOperator(task_id='END_dag')
 
-    start_dag >> hello_operator >> print_lib >> end_dag
+    #start_dag >> hello_task >> print_task >> end_dag
+    start_dag >> hello_task >> end_dag
