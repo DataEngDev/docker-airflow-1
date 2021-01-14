@@ -33,7 +33,7 @@ services:
     entrypoint: /bin/bash
     command:
       - -c
-      - pip install --upgrade pip && pwd && ls && airflow users list || ( airflow db init &&
+      - pip install --upgrade pip && pip install hadoop && pwd && ls && airflow users list || ( airflow db init &&
         airflow users create
           --role Admin
           --username airflow
